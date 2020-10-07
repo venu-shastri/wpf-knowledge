@@ -12,6 +12,15 @@
             <StackPanel.Children>
                 <Button Width="100" Height="50" Content="{me:ButtonContentValueProviderExtension}" Margin="10" Click="Button_Click"></Button>
                 <TextBox Width="100" Height="30" x:Name="textBox"></TextBox>
+                <!-- new UpperCaseConverterExtension('hello')-->
+                <TextBlock Text="{me:UpperCaseConverterExtension hello}"></TextBlock>
+                <!-- UpperCaseConverterExtension obj=new UpperCaseConverterExtension()
+                    obj.Data="hi";
+                    TextBlock.Text=obj.ProvideValue()
+                -->
+                <TextBlock Text="{me:UpperCaseConverter Data=hi}"></TextBlock>
+                <TextBlock Text="{me:UpperCaseConverter hello, Data=hi}"></TextBlock>
+                
             </StackPanel.Children>
         </StackPanel>
     </Window.Content>
