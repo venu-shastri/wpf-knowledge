@@ -156,7 +156,8 @@ Extensible Application Markup Language : XML document used describe wpf UI obejc
 
 
 ```C#
- Style _buttonStyle = new Style();
+//Code
+Style _buttonStyle = new Style();
 
             Setter _heightSetter = new Setter();
             _heightSetter.Property = Button.HeightProperty; //Dependency Property
@@ -178,4 +179,101 @@ Extensible Application Markup Language : XML document used describe wpf UI obejc
             this.button4.Style = _buttonStyle;
             this.button5.Style = _buttonStyle;
 ```
+
+
+
+```XML
+  <Button  Content="Button1" Margin="10" x:Name="button1">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Setters>
+                        <Setter Property="Height" Value="30"></Setter>
+                        <Setter Property="Width" Value="100"></Setter>
+                        <Setter Property="FontSize" Value="12"></Setter>
+                        <Setter Property="Foreground" Value="Blue"></Setter>
+                    </Style.Setters>
+                </Style>
+            </Button.Style>
+</Button>
+```
+
+
+
+#### reusability -in xaml
+
+----
+
+> Local Resource Management - using - Resource Dictionaries
+>
+> Resource : Reusable Object
+>
+> Resource Dictionary is-a Dictionary
+>
+> Every  Control - Derived from "FrameworkElement" Base Class will get its own ResourceDictionary
+>
+> How to Access ?
+>
+> ```
+> Window _window=new Window(); // Derived From FrameworkElement
+> _window.Resources.Add(<key>,<value>);
+> 
+> <Window>
+>   <Window.Resources>
+>   	<ResourceDictionary>
+>   			<!-- Add Objects -->
+>   			<Style x:key="buttonStyle"></Style>
+>   	</ResourceDictionary>	
+>   </Window.Resources>
+> <Window>
+> ```
+>
+> ```xml
+> <Window x:Class="CodeWithCompiledMarkup.StylesDemo"
+>       .......
+>         Title="StylesDemo" Height="450" Width="800">
+>     <Window.Resources>
+>         <ResourceDictionary>
+>             <Style x:Key="buttonStyle" TargetType="Button">
+>                 <Style.Setters>
+>                     <Setter Property="Height" Value="30"></Setter>
+>                     <Setter Property="Width" Value="100"></Setter>
+>                     <Setter Property="FontSize" Value="12"></Setter>
+>                     <Setter Property="Foreground" Value="Blue"></Setter>
+>                 </Style.Setters>
+>             </Style>
+>         </ResourceDictionary>
+>     </Window.Resources>
+>     <StackPanel>
+>         <Button  Content="Button1" Style="{StaticResource ResourceKey=buttonStyle}" Margin="10" x:Name="button1"></Button>
+>         <Button  Content="Button2" Style="{StaticResource ResourceKey=buttonStyle}" Margin="10" x:Name="button2"></Button>
+>         <Button  Content="Button3" Style="{StaticResource ResourceKey=buttonStyle}" Margin="10" x:Name="button3"></Button>
+>         <Button  Content="Button4" Style="{StaticResource ResourceKey=buttonStyle}" Margin="10" x:Name="button4"></Button>
+>         <Button  Content="Button5" Style="{StaticResource ResourceKey=buttonStyle}" Margin="10" x:Name="button5"></Button>
+>         <StackPanel>
+>             <StackPanel.Resources>
+>                 <ResourceDictionary>
+>                     <Style x:Key="buttonStyle" TargetType="Button">
+>                         <Style.Setters>
+>                             <Setter Property="Height" Value="30"></Setter>
+>                             <Setter Property="Width" Value="100"></Setter>
+>                             <Setter Property="FontSize" Value="12"></Setter>
+>                             <Setter Property="Foreground" Value="Red"></Setter>
+>                         </Style.Setters>
+>                     </Style>
+>                 </ResourceDictionary>
+>             </StackPanel.Resources>
+>             <Button  Content="Button6" Margin="10" x:Name="button6" Style="{StaticResource ResourceKey=buttonStyle}"></Button>
+>             <Button  Content="Button7" Margin="10" x:Name="button7" Style="{StaticResource ResourceKey=buttonStyle}"></Button>
+>             <Button  Content="Button8" Margin="10" x:Name="button8" Style="{StaticResource ResourceKey=buttonStyle}"></Button>
+>             <Button  Content="Button9" Margin="10" x:Name="button9" Style="{StaticResource ResourceKey=buttonStyle}"></Button>
+>             <Button  Content="Button10" Margin="10" x:Name="button10" Style="{StaticResource ResourceKey=buttonStyle}"></Button>
+>         </StackPanel>
+>               
+>     </StackPanel>
+> </Window>
+> ```
+>
+> 
+
+
 
