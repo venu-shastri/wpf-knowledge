@@ -1,0 +1,7 @@
+D:\knowledge\wpf-knowledge\samples\WpfCodeOnly\bin\Debug\WpfCodeOnly.exe.config
+D:\knowledge\wpf-knowledge\samples\WpfCodeOnly\bin\Debug\WpfCodeOnly.exe
+D:\knowledge\wpf-knowledge\samples\WpfCodeOnly\bin\Debug\WpfCodeOnly.pdb
+D:\knowledge\wpf-knowledge\samples\WpfCodeOnly\obj\Debug\WpfCodeOnly.csprojAssemblyReference.cache
+D:\knowledge\wpf-knowledge\samples\WpfCodeOnly\obj\Debug\WpfCodeOnly.csproj.CoreCompileInputs.cache
+D:\knowledge\wpf-knowledge\samples\WpfCodeOnly\obj\Debug\WpfCodeOnly.exe
+D:\knowledge\wpf-knowledge\samples\WpfCodeOnly\obj\Debug\WpfCodeOnly.pdb
