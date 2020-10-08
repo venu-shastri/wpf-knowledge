@@ -16,3 +16,7 @@ D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\CodeWithComp
 D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\CodeWithCompiledMarkup.csprojAssemblyReference.cache
 D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\StylesDemo.g.cs
 D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\StylesDemo.baml
+D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\App.baml
+D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\Resources\styles\ControlStyles.baml
+D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\DataBindingDemo.g.cs
+D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\DataBindingDemo.baml

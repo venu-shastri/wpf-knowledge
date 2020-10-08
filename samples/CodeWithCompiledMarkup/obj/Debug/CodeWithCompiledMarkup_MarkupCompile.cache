@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\App.xaml
-2982393649
+4-550917927
 
-9-401201325
+12-1249690691
 13-1505183044
-MainWindow.xaml;StylesDemo.xaml;
+DataBindingDemo.xaml;MainWindow.xaml;Resources\styles\ControlStyles.xaml;StylesDemo.xaml;
 
 False
 

@@ -55,12 +55,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\NameValueConverter.cs" />
+    <Compile Include="Converters\SliderValueConverter.cs" />
+    <Compile Include="DataBindingDemo.xaml.cs">
+      <DependentUpon>DataBindingDemo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MarkupExtensions\ButtonContentValueProviderExtension.cs" />
     <Compile Include="MarkupExtensions\UpperCaseConverterExtension.cs" />
     <Compile Include="StylesDemo.xaml.cs">
       <DependentUpon>StylesDemo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility\ButtonContentProvider.cs" />
+    <Page Include="DataBindingDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +82,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\styles\ControlStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StylesDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

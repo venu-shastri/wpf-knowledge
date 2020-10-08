@@ -1,0 +1,49 @@
+﻿<Window x:Class="CodeWithCompiledMarkup.DataBindingDemo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodeWithCompiledMarkup"
+        xmlns:converters="clr-namespace:CodeWithCompiledMarkup.Converters"
+        mc:Ignorable="d"
+        Title="DataBindingDemo" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <converters:SliderValueConverter x:Key="svcRef"></converters:SliderValueConverter>
+            <converters:NameValueConverter x:Key="nvcRef"></converters:NameValueConverter>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel>
+        <Slider Minimum="10" Maximum="100" x:Name="zoomControl" Margin="50" 
+                TickPlacement="BottomRight" TickFrequency="5" IsSnapToTickEnabled="true" ValueChanged="zoomControl_ValueChanged"></Slider>
+        <Rectangle Fill="Blue"  x:Name="canvasArea"
+                   Height="{Binding 
+            ElementName=zoomControl,
+            Path=Value,Mode=OneWay,Converter={StaticResource ResourceKey=svcRef}}"
+             Width="{Binding ElementName=zoomControl,Path=Value,Mode=OneWay,
+            Converter={StaticResource ResourceKey=svcRef}}" ></Rectangle>
+
+        <TextBox Margin="50" Width="100"
+                 Text="{Binding 
+            ElementName=zoomControl,
+            Path=Value,
+            Mode=TwoWay,
+            UpdateSourceTrigger=PropertyChanged,Converter={StaticResource ResourceKey=svcRef}}"></TextBox>
+
+        <TextBox x:Name="firstName" Width="100" Margin="10"></TextBox>
+        <TextBox x:Name="middleName" Width="100" Margin="10"></TextBox>
+        <TextBox x:Name="lastName" Width="100" Margin="10"></TextBox>
+
+        <TextBox x:Name="fullNale" Width="100">
+            <TextBox.Text>
+                <MultiBinding Converter="{StaticResource ResourceKey=nvcRef}">
+                    <MultiBinding.Bindings>
+                        <Binding ElementName="firstName" Path="Text"></Binding>
+                        <Binding ElementName="middleName" Path="Text"></Binding>
+                        <Binding ElementName="lastName" Path="Text"></Binding>
+                    </MultiBinding.Bindings>
+                </MultiBinding>
+            </TextBox.Text>
+        </TextBox>
+    </StackPanel>
+</Window>

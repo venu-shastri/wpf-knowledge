@@ -143,7 +143,7 @@ Extensible Application Markup Language : XML document used describe wpf UI obejc
 >
 > Style is a collection Of Setters
 >
-> Setter -> Property and Value
+> Setter -> Dependency Property and Value
 
 ```xml
 		<Button  Content="Button1" Margin="10" x:Name="button1"></Button>
@@ -276,4 +276,228 @@ Style _buttonStyle = new Style();
 > 
 
 
+
+### How to address Resources?
+
+> Resources : xaml , images , icons 
+>
+> Addressing Scheme : PACK URI 
+>
+> - Absolute Pack Uri
+> - Relative Pack Uri
+
+
+
+#### Resource Locations - "build action of resource"
+
+- The current assembly.
+- A referenced assembly.
+- A location relative to an assembly.
+- The application's site of origin.
+
+
+
+
+
+| Build Action              | Description                                                  |
+| ------------------------- | ------------------------------------------------------------ |
+| **ApplicationDefinition** | The file that defines your application. When you first create a project, this is *App.xaml** |
+| **Page**                  | Compile a XAML file to a binary .baml file for faster loading at run time. and embed  .baml file content to assembly (.exe) |
+| **Resource**              | Specifies to embed the file in an assembly manifest resource file with the extension *.g.resources*. (images,icons) |
+| **Content**               | A file marked as **Content**  will be copied to application directory .These files are included as part of the application directory  when it's deployed. |
+
+
+
+#### Triggers
+
+---
+
+> Object -> enables us to set property of an Control based on conditions
+>
+> Conditions 
+>
+> 1. Value of another property
+> 2. event
+> 3. Value of Databinding Expression
+>
+> Types of Triggers
+>
+> - PropertyTrigger
+> - EventTrigger
+> - DataTrigger
+>
+> Triggers usually used in style and templates.
+
+```C#
+<Style.Triggers>
+             <!-- Property Trigger-->
+            <Trigger Property="IsMouseOver" Value="true">
+                <Trigger.Setters>
+                    <Setter Property="Width" Value="150"></Setter>
+                    <Setter Property="Height" Value="50"></Setter>
+                  </Trigger.Setters>
+            </Trigger>
+</Style.Triggers>
+```
+
+>
+>
+>Note:- Trigger setters takes precedence over style setters .....Local value takes precedence over  style and trigger setters.
+
+
+
+### DataBinding
+
+---
+
+> Connector between two property Values
+>
+> Source Property: CLR property , DependencyProperty
+>
+> Target Property : DependencyProperty
+
+ex:
+
+```C#
+public class Button{
+
+//DependencyProperty
+public static DependencyProperty WidthProperty =DependencyProperty.Register(......);
+//CLR Property
+public double Width{ }
+
+}
+```
+
+#### What is DependencyProperty
+
+---
+
+- Dependency Property can be used to extend the functionality of a Control/Class Property
+  - Compute the value of Property based on the value of input providers
+  - Enables metadata Support
+    - default value 
+    - Change Notification
+    - Value Corrections
+
+### DataBinding in WPF
+
+---
+
+- use Binding class
+
+  - Mode
+  - ElementName
+  - Source
+  - Path
+  - UpdateSourceTrigger
+  - Converter
+    - IValueConverter - Binding
+    - IMultiValuecConverter - MultiBinding (Multiple Source ....Single Target)
+
+- Define Source object and source Property (Path)
+
+- Set Target Object Dependency Property using **SetBinding** method 
+
+  ```XMl
+   <Slider Minimum="10" Maximum="100" x:Name="zoomControl" Margin="50" 
+                  TickPlacement="BottomRight" TickFrequency="5" IsSnapToTickEnabled="true" ValueChanged="zoomControl_ValueChanged"></Slider>
+          <Rectangle Fill="Blue"  x:Name="canvasArea"></Rectangle>
+  
+  
+  ```
+
+  
+
+```C#
+//Code
+Binding sliderValueToRectangleWidthConnector = new Binding();
+            //Source Information
+            sliderValueToRectangleWidthConnector.Source = this.zoomControl;
+            sliderValueToRectangleWidthConnector.Path = new PropertyPath("Value");
+
+            //Target
+            this.canvasArea.SetBinding(Rectangle.WidthProperty, sliderValueToRectangleWidthConnector);
+            this.canvasArea.SetBinding(Rectangle.HeightProperty, sliderValueToRectangleWidthConnector);
+```
+
+#### Binding as a MarkupExtension
+
+```xml
+ <Slider Minimum="10" Maximum="100" x:Name="zoomControl" Margin="50" 
+                TickPlacement="BottomRight" TickFrequency="5" IsSnapToTickEnabled="true" ValueChanged="zoomControl_ValueChanged"></Slider>
+        <Rectangle Fill="Blue"  x:Name="canvasArea"
+                   Height="{Binding ElementName=zoomControl,Path=Value,Mode=OneWay}"
+                   Width="{Binding ElementName=zoomControl,Path=Value,Mode=OneWay}" ></Rectangle>
+```
+
+
+
+#### Coverters
+
+```C#
+public class SliderValueConverter : IValueConverter
+    {
+        //Value Bind from Source---->Target
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            .....
+        }
+
+        //Value Bind From Target To Source
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+           ......
+        }
+    }
+
+ public class NameValueConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            ....
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            .....
+        }
+    }
+}
+```
+
+```xml
+<ResourceDictionary>
+            <converters:SliderValueConverter x:Key="svcRef"></converters:SliderValueConverter>
+            <converters:NameValueConverter x:Key="nvcRef"></converters:NameValueConverter>
+ </ResourceDictionary>
+
+//Single Value Binding
+
+  <TextBox Margin="50" Width="100"
+                 Text="{Binding 
+            ElementName=zoomControl,
+            Path=Value,
+            Mode=TwoWay,
+            UpdateSourceTrigger=PropertyChanged,
+            Converter={StaticResource ResourceKey=svcRef}}"></TextBox>
+
+//MultiValue Binding
+
+<TextBox x:Name="firstName" Width="100" Margin="10"></TextBox>
+        <TextBox x:Name="middleName" Width="100" Margin="10"></TextBox>
+        <TextBox x:Name="lastName" Width="100" Margin="10"></TextBox>
+
+        <TextBox x:Name="fullNale" Width="100">
+            <TextBox.Text>
+                <MultiBinding Converter="{StaticResource ResourceKey=nvcRef}">
+                    <MultiBinding.Bindings>
+                        <Binding ElementName="firstName" Path="Text"></Binding>
+                        <Binding ElementName="middleName" Path="Text"></Binding>
+                        <Binding ElementName="lastName" Path="Text"></Binding>
+                    </MultiBinding.Bindings>
+                </MultiBinding>
+            </TextBox.Text>
+        </TextBox>
+```
 
