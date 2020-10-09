@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodeWithCompiledMarkup"
+        xmlns:validationrules="clr-namespace:CodeWithCompiledMarkup.ValidationRules"
         mc:Ignorable="d"
         Title="UserAdminDashboard" Height="450" Width="800">
     <DockPanel LastChildFill="True">
@@ -33,7 +34,15 @@
                         <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="2" Grid.Column="0">Email</TextBlock>
 
                         <TextBox Text="{Binding Path=UserName,Mode=TwoWay}" Margin="2" Width="100" Grid.Row="0" Grid.Column="1"></TextBox>
-                        <TextBox Text="{Binding Path=Password,Mode=TwoWay}" Margin="2" Width="100" Grid.Row="1" Grid.Column="1"></TextBox>
+                        <TextBox  Margin="2" Width="100" Grid.Row="1" Grid.Column="1" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+                            <TextBox.Text>
+                                <Binding Path="Password" Mode="TwoWay" ValidatesOnExceptions="True" NotifyOnValidationError="True">
+                                    <Binding.ValidationRules>
+                                        <validationrules:PasswordValidationRule></validationrules:PasswordValidationRule>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <TextBox Text="{Binding Path=Email,Mode=TwoWay}" Margin="2" Width="100" Grid.Row="2" Grid.Column="1"></TextBox>
 
                         <Button Width="100" Grid.Row="3" Grid.Column="0" Content="Register" Click="RegisterButton_Click"></Button>

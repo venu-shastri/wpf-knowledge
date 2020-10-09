@@ -71,6 +71,7 @@
       <DependentUpon>UserAdminDashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility\ButtonContentProvider.cs" />
+    <Compile Include="ValidationRules\PasswordValidationRule.cs" />
     <Page Include="DataBindingDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
