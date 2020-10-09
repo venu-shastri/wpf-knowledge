@@ -28,7 +28,8 @@
             ElementName=zoomControl,
             Path=Value,
             Mode=TwoWay,
-            UpdateSourceTrigger=PropertyChanged,Converter={StaticResource ResourceKey=svcRef}}"></TextBox>
+            UpdateSourceTrigger=PropertyChanged,
+            Converter={StaticResource ResourceKey=svcRef}}"></TextBox>
 
         <TextBox x:Name="firstName" Width="100" Margin="10"></TextBox>
         <TextBox x:Name="middleName" Width="100" Margin="10"></TextBox>

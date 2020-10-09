@@ -62,8 +62,12 @@
     </Compile>
     <Compile Include="MarkupExtensions\ButtonContentValueProviderExtension.cs" />
     <Compile Include="MarkupExtensions\UpperCaseConverterExtension.cs" />
+    <Compile Include="Models\UserDataModel.cs" />
     <Compile Include="StylesDemo.xaml.cs">
       <DependentUpon>StylesDemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserAdminDashboard.xaml.cs">
+      <DependentUpon>UserAdminDashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility\ButtonContentProvider.cs" />
     <Page Include="DataBindingDemo.xaml">
@@ -87,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StylesDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserAdminDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

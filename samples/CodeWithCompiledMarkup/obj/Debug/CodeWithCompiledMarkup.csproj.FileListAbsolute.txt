@@ -20,3 +20,5 @@ D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\App.baml
 D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\Resources\styles\ControlStyles.baml
 D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\DataBindingDemo.g.cs
 D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\DataBindingDemo.baml
+D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\UserAdminDashboard.g.cs
+D:\knowledge\wpf-knowledge\samples\CodeWithCompiledMarkup\obj\Debug\UserAdminDashboard.baml
