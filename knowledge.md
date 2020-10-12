@@ -611,3 +611,25 @@ Main(){
 > who uses : ContentPresenter and ItemsPrsenter
 
 Ex: instance of UserDataModel
+
+
+
+
+
+### ViewModels Communication
+
+----
+
+> EventAggregator Pattern 
+
+
+
+Assignment
+
+---
+
+> Seperate  UserAdminDashBoardViewModel Usercontrol UI -> Three Different UserControls
+>
+> - AddNewUserView.xaml - AddNewUserViewModel
+> - SelectUserView.xaml - SelectUserViewModel
+> - UserDetailsView - UserDetailsViewModel
