@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="MVVMDemo.Views.Calculator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMDemo.Views"
+             xmlns:viewModels="clr-namespace:MVVMDemo.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <!-- Instantiates ViewModel type using DefaultConstructor-->
+        <viewModels:CalculatorViewModel></viewModels:CalculatorViewModel>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Width="100" Grid.Row="0" Grid.Column="0" Margin="5">OperandOne</TextBlock>
+        <TextBlock Width="100" Grid.Row="1" Grid.Column="0" Margin="5">OperandTwo</TextBlock>
+        <TextBlock Width="100" Grid.Row="2" Grid.Column="0" Margin="5">OperandResult</TextBlock>
+        <Button Content="Add" Width="100" Grid.Row="3" Grid.Column="0" Margin="5" Click="AddButton_Click"></Button>
+        <Button Content="Clear" Width="100" Grid.Row="3" Grid.Column="1" Margin="5"></Button>
+
+        <TextBox Grid.Row="0" Grid.Column="1" Width="100" Margin="5" Text="{Binding Path=OperandOne}"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Width="100" Margin="5" Text="{Binding Path=OperandTwo}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Width="100" Margin="5" Text="{Binding Path=Result,Mode=OneWay}" IsEnabled="False"></TextBox>
+    </Grid>
+    
+</UserControl>

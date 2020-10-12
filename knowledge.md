@@ -394,6 +394,12 @@ public double Width{ }
   - Converter
     - IValueConverter - Binding
     - IMultiValuecConverter - MultiBinding (Multiple Source ....Single Target)
+  - Validation and ErrorFeedback
+    - ValidationRule abstarct class
+    - ErrorFeedBack  -> ErrorTemplate (Template -> Presentation)
+    - Vaidation.HasError : Value indicates control state
+    - Validation.Errors : Latest Error
+    - Validation.ErrorTemplate : instance of ControlTemplate
 
 - Define Source object and source Property (Path)
 
@@ -501,3 +507,23 @@ public class SliderValueConverter : IValueConverter
         </TextBox>
 ```
 
+
+
+#### DataContext
+
+---
+
+- Source for Data-Binding  to resolve source properties
+- {Binding Path=PropertyName}  ** **Do not provide source object information****
+- DataContext property get inherited from "FrameworkElement"
+- Value of the DataContext Property of root element will pass down through the all the child and descendent nodes.
+
+#### INotifyPropertyChanged in WPF
+
+---
+
+> Used to notify wpf Binding Target about change in the source property value....
+
+#### AdornedElementPlaceholder
+
+> Represents the element used in a [ControlTemplate](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.controltemplate?view=netcore-3.1) to specify where a decorated control is placed relative to other elements in the [ControlTemplate](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.controltemplate?view=netcore-3.1).
