@@ -18,6 +18,11 @@ namespace MVVMDemo.ViewModels
         public CalculatorViewModel()
         {
             this.AddCommand = new Commands.AddCommandClass(this);
+
+            Action<object> _executeMethodAddress = new Action<object>(this.ClearWrapper);
+            Func<object, bool> _canExecuteMethodAddress = new Func<object, bool>(this.CanExecuteWrapper);
+            this.ClearCommand = new Commands.DelegateCommandClass(_executeMethodAddress, _canExecuteMethodAddress);
+
         }
         #endregion
 
@@ -88,6 +93,23 @@ namespace MVVMDemo.ViewModels
         public  ICommand AddCommand
         {
             get;set;
+        }
+
+        public ICommand ClearCommand
+        {
+            get;set;
+        }
+        #endregion
+
+        #region Command helper Methods
+
+        void ClearWrapper(object parameter)
+        {
+            this.Clear();
+        }
+        bool CanExecuteWrapper(object parameter)
+        {
+            return true;
         }
         #endregion
     }

@@ -35,5 +35,15 @@ namespace MVVMDemo.Views
             }
 
         }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModels.CalculatorViewModel _viewModel = (this.DataContext as ViewModels.CalculatorViewModel);
+            if (_viewModel.ClearCommand.CanExecute(null))
+            {
+                _viewModel.ClearCommand.Execute(null);
+
+            }
+        }
     }
 }

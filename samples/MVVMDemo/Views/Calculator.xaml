@@ -26,7 +26,7 @@
         <TextBlock Width="100" Grid.Row="1" Grid.Column="0" Margin="5">OperandTwo</TextBlock>
         <TextBlock Width="100" Grid.Row="2" Grid.Column="0" Margin="5">OperandResult</TextBlock>
         <Button Content="Add" Width="100" Grid.Row="3" Grid.Column="0" Margin="5" Click="AddButton_Click"></Button>
-        <Button Content="Clear" Width="100" Grid.Row="3" Grid.Column="1" Margin="5"></Button>
+        <Button Content="Clear" Width="100" Grid.Row="3" Grid.Column="1" Margin="5" Click="ClearButton_Click"></Button>
 
         <TextBox Grid.Row="0" Grid.Column="1" Width="100" Margin="5" Text="{Binding Path=OperandOne}"></TextBox>
         <TextBox Grid.Row="1" Grid.Column="1" Width="100" Margin="5" Text="{Binding Path=OperandTwo}"></TextBox>
