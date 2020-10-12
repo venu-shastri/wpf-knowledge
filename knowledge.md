@@ -527,3 +527,87 @@ public class SliderValueConverter : IValueConverter
 #### AdornedElementPlaceholder
 
 > Represents the element used in a [ControlTemplate](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.controltemplate?view=netcore-3.1) to specify where a decorated control is placed relative to other elements in the [ControlTemplate](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.controltemplate?view=netcore-3.1).
+
+
+
+#### MVVM
+
+---
+
+Model–view–viewmodel is a software architectural pattern that facilitates the separation of the development of the graphical user interface .
+
+https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/patterns-wpf-apps-with-the-model-view-viewmodel-design-pattern
+
+- Model -> Data
+- ViewModel
+  - Properties
+  - Logic
+  - Commands
+- View- Presentation
+
+#### MVVM Rules
+
+---
+
+1. View has-a Reference of ViewModel instance (DataContext) but not vice versa
+2. View --->Actions(Events)------> Command(Seperator Pattern)---------->Invoke --->ViewModel Methods
+
+
+
+#### Command Pattern
+
+> Seperator Pattern
+>
+> Encapsulate Request
+
+
+
+```C#
+//View
+public class CommandSource{
+
+    public ICommand Command{get;set;}
+    
+    public void Action(){
+        Command.Execute();
+    }
+}
+
+interface ICommnad{
+    
+    void Execute();
+}
+public Command:ICommand{
+
+    public void Execute(){
+        CommandTarget _target=new CommandTarget();
+        _target.DoTask();
+    }
+}
+
+//ViewModel
+public class CommandTarget{
+
+    public void DoTask(){
+        
+    }
+}
+
+Main(){
+    
+    Command _command=new Command();
+    CommandSource _source=new CommandSource();
+    _source.Command=_command;
+    _source.Action();//Commamd.Execute()->CommandTarget.DoTask()
+}
+```
+
+
+
+#### DataTemplate
+
+> Presentation For Data
+
+> who uses : ContentPresenter and ItemsPrsenter
+
+Ex: instance of UserDataModel
