@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\knowledge\wpf-knowledge\samples\MVVMDemo\App.xaml
-2-179741610
+41431923467
 
-10-299297072
+141608777306
 13-1505183044
-MainWindow.xaml;Views\Calculator.xaml;
+MainWindow.xaml;Resources\UserDataModelTemplates.xaml;Views\Calculator.xaml;Views\UserManagementDashBoard.xaml;
 
 True
 

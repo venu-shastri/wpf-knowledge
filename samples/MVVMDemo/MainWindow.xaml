@@ -9,7 +9,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
-        <views:Calculator DockPanel.Dock="Left"></views:Calculator>
+        <views:Calculator DockPanel.Dock="top"></views:Calculator>
+        <views:UserManagementDashBoard></views:UserManagementDashBoard>
+        
        
     </DockPanel>
 </Window>
